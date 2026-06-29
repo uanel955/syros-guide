@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syros Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--text:#102033;--muted:#66788f;--line:#dde6ef;--blue:#0b6cf0;--blue2:#eaf2ff;--shadow:0 12px 30px rgba(16,32,51,.08);--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text)}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:24px 20px 40px}
+.home{display:grid;place-items:center;min-height:100vh;padding:24px}
+.home-inner{width:min(980px,100%)}
+.home h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:1;text-align:center;margin-bottom:8px}
+.home p{text-align:center;color:var(--muted);margin-bottom:28px;font-size:1.02rem}
+.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.home-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s}
+.home-card:hover{transform:translateY(-2px)}
+.home-image{aspect-ratio:4/3;background:#dbe8f7}
+.home-image img{width:100%;height:100%;object-fit:cover;display:block}
+.home-body{padding:16px}
+.home-title{font-size:1.35rem;font-weight:700}
+.home-meta{color:var(--muted);margin-top:4px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.back{text-decoration:none;color:var(--muted);font-weight:600}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 10px}
+input,select{border:1px solid var(--line);background:#fff;border-radius:999px;padding:12px 14px;font:inherit;color:var(--text)}
+input{flex:1;min-width:220px}
+.count{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card.hidden{display:none}
+.image{aspect-ratio:16/10;background:#e7eef7}
+.image img{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.name{font-size:1.18rem;font-weight:700;line-height:1.15}
+.meta{font-size:.84rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.desc{font-size:.96rem;color:#344861;line-height:1.45}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.8rem;background:var(--blue2);color:var(--blue);padding:5px 9px;border-radius:999px}
+.footer{padding:0 14px 14px}
+.btn{display:inline-block;width:100%;text-align:center;background:var(--blue);color:#fff;text-decoration:none;padding:11px 14px;border-radius:12px;font-weight:600}
+@media (max-width:860px){.home-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<section id="home" class="page active home">
+  <div class="home-inner">
+    <h1>Syros</h1>
+    <p>Beaches, restaurants, bars.</p>
+    <div class="home-grid">
+      <a class="home-card" href="#beaches">
+        <div class="home-image"><img src="images/beaches/galissas.jpg" alt="Beaches"></div>
+        <div class="home-body"><div class="home-title">Beaches</div><div class="home-meta">30 spots</div></div>
+      </a>
+      <a class="home-card" href="#restaurants">
+        <div class="home-image"><img src="images/restaurants/tsipouradiko.jpg" alt="Restaurants"></div>
+        <div class="home-body"><div class="home-title">Restaurants</div><div class="home-meta">20 spots</div></div>
+      </a>
+      <a class="home-card" href="#bars">
+        <div class="home-image"><img src="images/bars/theosis.jpg" alt="Bars"></div>
+        <div class="home-body"><div class="home-title">Bars</div><div class="home-meta">18 spots</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="beaches" class="page"><div class="wrap">
+  <div class="top"><a class="back" href="#home">← Home</a><h2 class="section-title">Beaches</h2></div>
+  <div class="tools"><input id="beaches-search" placeholder="Search..."><select id="beaches-filter"><option value="all">All</option><option value="organized">Well organised</option><option value="partial">Partially organised</option><option value="secluded">Secluded</option></select></div>
+  <div class="count" id="beaches-count">30 spots</div><div class="grid" id="beaches-grid"></div>
+</div></section>
+
+<section id="restaurants" class="page"><div class="wrap">
+  <div class="top"><a class="back" href="#home">← Home</a><h2 class="section-title">Restaurants</h2></div>
+  <div class="tools"><input id="restaurants-search" placeholder="Search..."><select id="restaurants-filter"><option value="all">All</option><option value="greek">Greek taverna</option><option value="seafood">Seafood</option><option value="fine">Fine dining</option><option value="italian">Italian</option><option value="international">International</option><option value="souvlaki">Souvlaki</option><option value="brunch">Brunch</option></select></div>
+  <div class="count" id="restaurants-count">20 spots</div><div class="grid" id="restaurants-grid"></div>
+</div></section>
+
+<section id="bars" class="page"><div class="wrap">
+  <div class="top"><a class="back" href="#home">← Home</a><h2 class="section-title">Bars</h2></div>
+  <div class="tools"><input id="bars-search" placeholder="Search..."><select id="bars-filter"><option value="all">All</option><option value="cocktail">Cocktail bar</option><option value="wine">Wine bar</option><option value="beachbar">Beach bar</option><option value="dance">Dance / nightclub</option></select></div>
+  <div class="count" id="bars-count">18 spots</div><div class="grid" id="bars-grid"></div>
+</div></section>
+
+<script>
+const data = {"beaches":[{"name":"Galissas","meta":"Sand \u00b7 Well Organised","desc":"Popular family beach.","tags":["Family","Water Sports","Sandy"],"filter":"organized","img":"images/beaches/galissas.jpg","map":"Galissas beach Syros Greece"},{"name":"Agathopes","meta":"Sand \u00b7 Well Organised","desc":"Family-friendly sandy beach.","tags":["Family","Wheelchair","Sandy"],"filter":"organized","img":"images/beaches/agathopes.jpg","map":"Agathopes beach Syros Greece"},{"name":"Armeos","meta":"Pebble \u00b7 Secluded","desc":"Quiet beach next to Galissas.","tags":["Nudist","Secluded"],"filter":"secluded","img":"images/beaches/armeos.jpg","map":"Armeos beach Syros Greece"},{"name":"Ahladi","meta":"Sand \u00b7 Well Organised","desc":"Calm water and sunsets.","tags":["Family","Sandy"],"filter":"organized","img":"images/beaches/ahladi.jpg","map":"Ahladi beach Syros Greece"},{"name":"Poseidonia","meta":"Sand \u00b7 Partially Organised","desc":"Calm village beach.","tags":["Family","Sandy"],"filter":"partial","img":"images/beaches/poseidonia.jpg","map":"Poseidonia beach Syros Greece"},{"name":"Kini","meta":"Sand \u00b7 Well Organised","desc":"Popular beach with tavernas nearby.","tags":["Family","Wheelchair","Sandy"],"filter":"organized","img":"images/beaches/kini.jpg","map":"Kini beach Syros Greece"},{"name":"Finikas","meta":"Sand \u00b7 Partially Organised","desc":"Harbour beach with calm water.","tags":["Family","Sandy"],"filter":"partial","img":"images/beaches/finikas.jpg","map":"Finikas beach Syros Greece"},{"name":"Fabrika","meta":"Sand/Pebble \u00b7 Partially Organised","desc":"Close to Ermoupolis.","tags":[],"filter":"partial","img":"images/beaches/fabrika.jpg","map":"Fabrika beach Syros Greece"},{"name":"Delfini","meta":"Sand/Pebble \u00b7 Secluded","desc":"Quiet cove with clear water.","tags":["Nudist","Sandy"],"filter":"secluded","img":"images/beaches/delfini.jpg","map":"Delfini beach Syros Greece"},{"name":"Azolimnos","meta":"Sand \u00b7 Well Organised","desc":"Popular local beach.","tags":["Family","Sandy"],"filter":"organized","img":"images/beaches/azolimnos.jpg","map":"Azolimnos beach Syros Greece"},{"name":"Vari","meta":"Sand \u00b7 Well Organised","desc":"Full facilities in a sheltered bay.","tags":["Family","Wheelchair","Water Sports"],"filter":"organized","img":"images/beaches/vari.jpg","map":"Vari beach Syros Greece"},{"name":"Megas Gialos","meta":"Sand \u00b7 Well Organised","desc":"Wide family beach.","tags":["Family","Sandy"],"filter":"organized","img":"images/beaches/megas-gialos.jpg","map":"Megas Gialos beach Syros Greece"},{"name":"Ampela","meta":"Sand \u00b7 Partially Organised","desc":"Quiet and peaceful.","tags":["Sandy"],"filter":"partial","img":"images/beaches/ampela.jpg","map":"Ampela beach Syros Greece"},{"name":"Kokkina","meta":"Pebble \u00b7 Secluded","desc":"Remote rocky beach.","tags":["Secluded"],"filter":"secluded","img":"images/beaches/kokkina.jpg","map":"Kokkina beach Syros Greece"},{"name":"Komito","meta":"Sand \u00b7 Partially Organised","desc":"Lively beach with water sports.","tags":["Water Sports","Sandy"],"filter":"partial","img":"images/beaches/komito.jpg","map":"Komito beach Syros Greece"},{"name":"Santorinioi","meta":"Pebble \u00b7 Partially Organised","desc":"Quiet pebble beach.","tags":[],"filter":"partial","img":"images/beaches/santorinioi.jpg","map":"Santorinioi beach Syros Greece"},{"name":"Lotos","meta":"Sand/Pebble \u00b7 Partially Organised","desc":"Relaxed beach with shade.","tags":["Sandy"],"filter":"partial","img":"images/beaches/lotos.jpg","map":"Lotos beach Syros Greece"},{"name":"Aetos","meta":"Sand \u00b7 Secluded","desc":"Unspoiled beach.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/aetos.jpg","map":"Aetos beach Syros Greece"},{"name":"Americanou","meta":"Sand \u00b7 Secluded","desc":"Very quiet sandy spot.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/americanou.jpg","map":"Americanou beach Syros Greece"},{"name":"Fokiotripes","meta":"Pebble \u00b7 Secluded","desc":"Wild coastline and clear water.","tags":["Secluded"],"filter":"secluded","img":"images/beaches/fokiotripes.jpg","map":"Fokiotripes beach Syros Greece"},{"name":"Grammata","meta":"Sand \u00b7 Secluded","desc":"Remote cove with inscriptions.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/grammata.jpg","map":"Grammata beach Syros Greece"},{"name":"Katergaki","meta":"Rocky cove \u00b7 Secluded","desc":"Hidden cove.","tags":["Nudist","Secluded"],"filter":"secluded","img":"images/beaches/katergaki.jpg","map":"Katergaki beach Syros Greece"},{"name":"Kommenou","meta":"Sand/Pebble \u00b7 Secluded","desc":"Private-feeling swim spot.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/kommenou.jpg","map":"Kommenou beach Syros Greece"},{"name":"Lia","meta":"Pebble \u00b7 Secluded","desc":"Far from the crowds.","tags":["Secluded"],"filter":"secluded","img":"images/beaches/lia.jpg","map":"Lia beach Syros Greece"},{"name":"Marmari","meta":"Sand \u00b7 Secluded","desc":"Off-the-path beach.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/marmari.jpg","map":"Marmari beach Syros Greece"},{"name":"Megali Agkali","meta":"Sand/Pebble \u00b7 Secluded","desc":"Boat-only beach.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/megali-agkali.jpg","map":"Megali Agkali beach Syros Greece"},{"name":"Megas Lakos","meta":"Gravel \u00b7 Secluded","desc":"Untouched gravel beach.","tags":["Secluded"],"filter":"secluded","img":"images/beaches/megas-lakos.jpg","map":"Megas Lakos beach Syros Greece"},{"name":"Porto Tragaki","meta":"Pebble \u00b7 Secluded","desc":"Small caves and rocks.","tags":["Secluded"],"filter":"secluded","img":"images/beaches/porto-tragaki.jpg","map":"Porto Tragaki beach Syros Greece"},{"name":"Varvarousa","meta":"Sand \u00b7 Secluded","desc":"Pristine hidden beach.","tags":["Sandy","Secluded"],"filter":"secluded","img":"images/beaches/varvarousa.jpg","map":"Varvarousa beach Syros Greece"},{"name":"Voulgari","meta":"Sand \u00b7 Partially Organised","desc":"Family beach with access ramp.","tags":["Family","Wheelchair","Water Sports"],"filter":"partial","img":"images/beaches/voulgari.jpg","map":"Voulgari beach Syros Greece"}],"restaurants":[{"name":"To Tsipouradiko tis Mirsinis","meta":"Ermoupoli \u00b7 Greek Taverna","desc":"Waterfront meze classic.","tags":["Meze","Waterfront"],"filter":"greek","img":"images/restaurants/tsipouradiko.jpg","map":"To Tsipouradiko tis Mirsinis Ermoupoli Syros"},{"name":"Laoutari","meta":"Ermoupoli \u00b7 Greek Taverna","desc":"Good food and live music.","tags":["Live Music","Local"],"filter":"greek","img":"images/restaurants/laoutari.jpg","map":"Laoutari restaurant Ermoupoli Syros"},{"name":"To Limani","meta":"Ermoupoli \u00b7 Seafood","desc":"Fresh fish by the port.","tags":["Fresh Fish","Port"],"filter":"seafood","img":"images/restaurants/to-limani.jpg","map":"To Limani restaurant Ermoupoli Syros"},{"name":"Iliovasilema","meta":"Galissas \u00b7 Greek Taverna","desc":"Beachfront taverna.","tags":["Beachfront","Greek"],"filter":"greek","img":"images/restaurants/iliovasilema.jpg","map":"Iliovasilema restaurant Galissas Syros"},{"name":"Elexis","meta":"Ermoupoli \u00b7 Fine Dining","desc":"Rooftop sunset dinner.","tags":["Rooftop","Sunset"],"filter":"fine","img":"images/restaurants/elexis.jpg","map":"Elexis restaurant Ermoupoli Syros"},{"name":"Meltemi","meta":"Agathopes \u00b7 Greek Taverna","desc":"Family cooking and local produce.","tags":["Local Produce"],"filter":"greek","img":"images/restaurants/meltemi.jpg","map":"Meltemi taverna Agathopes Syros"},{"name":"Dyo Tzitzikia St'Almyrikia","meta":"Kini \u00b7 Seafood","desc":"Beachfront seafood and sunset.","tags":["Seafood","Sunset"],"filter":"seafood","img":"images/restaurants/dyo-tzitzikia.jpg","map":"Dyo Tzitzikia taverna Kini Syros"},{"name":"Calmo Mare","meta":"Finikas \u00b7 Greek Taverna","desc":"Local favourite in Finikas.","tags":["Local Favourite"],"filter":"greek","img":"images/restaurants/calmo-mare.jpg","map":"Calmo Mare restaurant Finikas Syros"},{"name":"Plakostroto","meta":"North Syros \u00b7 Greek Taverna","desc":"Homemade dishes with a view.","tags":["View","Sunset"],"filter":"greek","img":"images/restaurants/plakostroto.jpg","map":"Plakostroto restaurant Ai Michalis Syros"},{"name":"Avant Garden","meta":"Ermoupoli \u00b7 Fine Dining","desc":"Courtyard dining and wine list.","tags":["Courtyard","Wine"],"filter":"fine","img":"images/restaurants/avant-garden.jpg","map":"Avant Garden restaurant Ermoupoli Syros"},{"name":"Mazi","meta":"Ermoupoli \u00b7 Fine Dining","desc":"Creative Greek in a garden setting.","tags":["Garden","Creative Greek"],"filter":"fine","img":"images/restaurants/mazi.jpg","map":"Mazi restaurant Ermoupoli Syros"},{"name":"Amvix","meta":"Ermoupoli \u00b7 Italian","desc":"Homemade pasta and pizza.","tags":["Pasta","Pizza"],"filter":"italian","img":"images/restaurants/amvix.jpg","map":"Amvix Italian restaurant Ermoupoli Syros"},{"name":"Solo Grano","meta":"Ermoupoli \u00b7 Italian","desc":"Top pizza and pasta.","tags":["Pizza"],"filter":"italian","img":"images/restaurants/solo-grano.jpg","map":"Solo Grano restaurant Ermoupoli Syros"},{"name":"Khin Kao","meta":"Ermoupoli \u00b7 International","desc":"Thai food on Syros.","tags":["Thai","Bao Buns"],"filter":"international","img":"images/restaurants/khin-kao.jpg","map":"Khin Kao restaurant Ermoupoli Syros"},{"name":"Maison de Meze","meta":"Ano Syros \u00b7 Greek Taverna","desc":"Simple meze in Ano Syros.","tags":["Meze","Ano Syros"],"filter":"greek","img":"images/restaurants/maison-de-meze.jpg","map":"Maison de Meze restaurant Ano Syros"},{"name":"Sinnous","meta":"Ermoupoli \u00b7 Greek Taverna","desc":"Local meze favourite.","tags":["Local","Meze"],"filter":"greek","img":"images/restaurants/sinnous.jpg","map":"Sinnous restaurant Ermoupoli Syros"},{"name":"Espermethentiv","meta":"Ermoupoli \u00b7 Greek Taverna","desc":"Hidden spot near the shipyard.","tags":["Hidden","Value"],"filter":"greek","img":"images/restaurants/espermethentiv.jpg","map":"Espermethentiv restaurant Ermoupoli Syros"},{"name":"Mammo","meta":"Ermoupoli \u00b7 Brunch","desc":"Busy harbour all-day spot.","tags":["Harbour","All-day"],"filter":"brunch","img":"images/restaurants/mammo.jpg","map":"Mammo restaurant Ermoupoli Syros"},{"name":"Gnision Souvlaki","meta":"Ermoupoli \u00b7 Souvlaki","desc":"Cheap and quick gyros.","tags":["Gyros","Takeaway"],"filter":"souvlaki","img":"images/restaurants/gnision-souvlaki.jpg","map":"Gnision Souvlaki Ermoupoli Syros"},{"name":"Kamarias","meta":"Ermoupoli \u00b7 Souvlaki","desc":"Handmade gyros and souvlaki.","tags":["Gyros","Chicken Souvlaki"],"filter":"souvlaki","img":"images/restaurants/kamarias.jpg","map":"Kamarias souvlaki Ermoupoli Syros"}],"bars":[{"name":"MouSouTou","meta":"Ermoupoli \u00b7 Cocktail Bar","desc":"House gin and good cocktails.","tags":["Cocktails"],"filter":"cocktail","img":"images/bars/mousoutou.jpg","map":"MouSouTou bar Ermoupoli Syros"},{"name":"Theosis Bar","meta":"Ano Syros \u00b7 Cocktail Bar","desc":"Most popular Ano Syros bar.","tags":["Ano Syros","Popular"],"filter":"cocktail","img":"images/bars/theosis.jpg","map":"Theosis Bar Ano Syros"},{"name":"Kouchico","meta":"Ermoupoli \u00b7 Cocktail Bar","desc":"Craft cocktails near the port.","tags":["Craft","Late Night"],"filter":"cocktail","img":"images/bars/kouchico.jpg","map":"Kouchico bar Ermoupoli Syros"},{"name":"Roga Syros","meta":"Ermoupoli \u00b7 Wine Bar","desc":"Small wine bar with street tables.","tags":["Wine","Orange Wine"],"filter":"wine","img":"images/bars/roga.jpg","map":"Roga wine bar Ermoupoli Syros"},{"name":"Boheme del Mar","meta":"Ermoupoli \u00b7 Cocktail Bar","desc":"Promenade bar for sunset drinks.","tags":["Sunset","Promenade"],"filter":"cocktail","img":"images/bars/boheme-del-mar.jpg","map":"Boheme del Mar bar Ermoupoli Syros"},{"name":"Barrio","meta":"Ermoupoli \u00b7 Dance / Nightclub","desc":"Themed nights and karaoke.","tags":["Dance","Karaoke"],"filter":"dance","img":"images/bars/barrio.jpg","map":"Barrio bar Ermoupoli Syros"},{"name":"Ciel Bar","meta":"Asteria Beach \u00b7 Beach Bar","desc":"Iconic seafront bar-restaurant.","tags":["Beach Bar","Sunbeds"],"filter":"beachbar","img":"images/bars/ciel.jpg","map":"Ciel Bar Asteria Beach Syros"},{"name":"Quattro Syros","meta":"Ermoupoli \u00b7 Dance / Nightclub","desc":"Party spot with live DJs.","tags":["Party","DJ"],"filter":"dance","img":"images/bars/quattro.jpg","map":"Quattro Syros bar"},{"name":"Severo","meta":"Ermoupoli \u00b7 Dance / Nightclub","desc":"Drinks and dancing all night.","tags":["Dancing","Late"],"filter":"dance","img":"images/bars/severo.jpg","map":"Severo bar Ermoupoli Syros"},{"name":"Syrianon Bar","meta":"Ano Syros \u00b7 Cocktail Bar","desc":"Cocktails with a big view.","tags":["View","Ano Syros"],"filter":"cocktail","img":"images/bars/syrianon.jpg","map":"Syrianon Bar Ano Syros"},{"name":"Ano The Upper Cocktail Bar","meta":"Ano Syros \u00b7 Cocktail Bar","desc":"Two terraces and great views.","tags":["Terraces","View"],"filter":"cocktail","img":"images/bars/ano-upper.jpg","map":"Ano The Upper Cocktail Bar Ano Syros"},{"name":"Sei Giorni","meta":"Ano Syros \u00b7 Cocktail Bar","desc":"Good prices and cheese plates.","tags":["Cheese Plates","View"],"filter":"cocktail","img":"images/bars/sei-giorni.jpg","map":"Sei Giorni bar Ano Syros"},{"name":"Kahuna Seaside Bar","meta":"Azolimnos \u00b7 Beach Bar","desc":"Beach bar with food and cocktails.","tags":["Beach Bar","Azolimnos"],"filter":"beachbar","img":"images/bars/kahuna.jpg","map":"Kahuna Seaside Bar Azolimnos Syros"},{"name":"Baobab","meta":"Finikas \u00b7 Beach Bar","desc":"All-day beach bar with sea view.","tags":["All-day","Sea View"],"filter":"beachbar","img":"images/bars/baobab.jpg","map":"Baobab bar Finikas Syros"},{"name":"Noho Cocktail Bar","meta":"Kini \u00b7 Beach Bar","desc":"Seafront bar with live music.","tags":["Kini","Live Music"],"filter":"beachbar","img":"images/bars/noho.jpg","map":"Noho Cocktail Bar Kini Syros"},{"name":"Passo Aperitivo","meta":"Ermoupoli \u00b7 Cocktail Bar","desc":"Newer bar in the pedestrian area.","tags":["Aperitivo"],"filter":"cocktail","img":"images/bars/passo.jpg","map":"Passo Aperitivo bar Ermoupoli Syros"},{"name":"Espiritu Cocktail & Drinks","meta":"Ermoupoli \u00b7 Cocktail Bar","desc":"Mexican vibe and solid drinks.","tags":["Mexican Vibe","Value"],"filter":"cocktail","img":"images/bars/espiritu.jpg","map":"Espiritu Cocktail bar Ermoupoli Syros"},{"name":"Suerte","meta":"Ermoupoli \u00b7 Wine Bar","desc":"Wine, cocktails, and champagne.","tags":["Wine","Champagne"],"filter":"wine","img":"images/bars/suerte.jpg","map":"Suerte wine bar Ermoupoli Syros"}]};
+
+function card(item) {
+  const tags = (item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+  return `<article class="card" data-filter="${item.filter}" data-search="${(item.name+' '+item.meta+' '+item.desc+' '+(item.tags||[]).join(' ')).toLowerCase()}">
+    <div class="image"><img src="${item.img}" alt="${item.name}" loading="lazy"></div>
+    <div class="body">
+      <div class="name">${item.name}</div>
+      <div class="meta">${item.meta}</div>
+      <div class="desc">${item.desc}</div>
+      <div class="tags">${tags}</div>
+    </div>
+    <div class="footer"><a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.map)}">Open in Google Maps</a></div>
+  </article>`;
+}
+
+function initSection(key) {
+  const grid = document.getElementById(`${key}-grid`);
+  const search = document.getElementById(`${key}-search`);
+  const filter = document.getElementById(`${key}-filter`);
+  const count = document.getElementById(`${key}-count`);
+  grid.innerHTML = data[key].map(card).join('');
+  const cards = [...grid.querySelectorAll('.card')];
+  function update() {
+    const q = search.value.toLowerCase().trim();
+    const f = filter.value;
+    let n = 0;
+    cards.forEach(el => {
+      const ok = (!q || el.dataset.search.includes(q)) && (f==='all' || el.dataset.filter===f);
+      el.classList.toggle('hidden', !ok);
+      if(ok) n++;
+    });
+    count.textContent = `${n} spots`;
+  }
+  search.addEventListener('input', update);
+  filter.addEventListener('change', update);
+}
+
+['beaches','restaurants','bars'].forEach(initSection);
+
+function showPage() {
+  const id = location.hash.replace('#','') || 'home';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  (document.getElementById(id)||document.getElementById('home')).classList.add('active');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', showPage);
+showPage();
+</script>
+</body>
+</html>
